@@ -18,9 +18,20 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowedDomains", o =>
     {
-        o.WithOrigins(builder.Configuration.GetSection("Cors").Get<string[]>())
-        .AllowAnyMethod()
-        .AllowAnyHeader();
+        var origins = builder.Configuration.GetSection("Cors").Get<string[]>();
+        if (origins != null && origins.Length > 0)
+        {
+            o.WithOrigins(origins)
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+        }
+        else
+        {
+            // Fallback khi chạy trên Cloud thiếu AppSettings
+            o.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+        }
     });
 });
 // Add services to the container.
