@@ -1,0 +1,88 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Response\Poll\**" />
+    <Content Remove="Models\Response\Poll\**" />
+    <EmbeddedResource Remove="Models\Response\Poll\**" />
+    <None Remove="Models\Response\Poll\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\AdvertisementController.cs" />
+    <Compile Remove="Controllers\AppConfigController.cs" />
+    <Compile Remove="Controllers\ArticleController.cs" />
+    <Compile Remove="Controllers\BannerFooterController.cs" />
+    <Compile Remove="Controllers\DocumentController.cs" />
+    <Compile Remove="Controllers\DraftDocumentController.cs" />
+    <Compile Remove="Controllers\InforgraphicController.cs" />
+    <Compile Remove="Controllers\LibraryItemController.cs" />
+    <Compile Remove="Controllers\OnlineCounterController.cs" />
+    <Compile Remove="Controllers\PollController.cs" />
+    <Compile Remove="Controllers\PortalController.cs" />
+    <Compile Remove="Controllers\PublicBudgetController.cs" />
+    <Compile Remove="Controllers\QuestionContentController.cs" />
+    <Compile Remove="Controllers\WebLinkController.cs" />
+    <Compile Remove="Services\Implement\AdvertisementRepository.cs" />
+    <Compile Remove="Services\Implement\AppConfigRepository.cs" />
+    <Compile Remove="Services\Implement\ArticleRepository.cs" />
+    <Compile Remove="Services\Implement\BannerFooterRepository.cs" />
+    <Compile Remove="Services\Implement\DocumentRepository.cs" />
+    <Compile Remove="Services\Implement\DraftDocumentRepository.cs" />
+    <Compile Remove="Services\Implement\InforgraphicRepository.cs" />
+    <Compile Remove="Services\Implement\LibraryItemRepository.cs" />
+    <Compile Remove="Services\Implement\OnlineCounterRepository.cs" />
+    <Compile Remove="Services\Implement\PollRepository.cs" />
+    <Compile Remove="Services\Implement\PortalRepository.cs" />
+    <Compile Remove="Services\Implement\PublicBudgetRepository.cs" />
+    <Compile Remove="Services\Implement\QuestionContentRepository.cs" />
+    <Compile Remove="Services\Implement\WebLinkRepository.cs" />
+    <Compile Remove="Services\Interface\IAdvertisementRepository.cs" />
+    <Compile Remove="Services\Interface\IAppConfigRepository.cs" />
+    <Compile Remove="Services\Interface\IArticleRepository.cs" />
+    <Compile Remove="Services\Interface\IBannerFooterRepository.cs" />
+    <Compile Remove="Services\Interface\IDocumentRepository.cs" />
+    <Compile Remove="Services\Interface\IDraftDocumentRepository.cs" />
+    <Compile Remove="Services\Interface\IInforgraphicRepository.cs" />
+    <Compile Remove="Services\Interface\ILibraryItemRepository.cs" />
+    <Compile Remove="Services\Interface\IOnlineCounterRepository.cs" />
+    <Compile Remove="Services\Interface\IPollRepository.cs" />
+    <Compile Remove="Services\Interface\IPortalRepository.cs" />
+    <Compile Remove="Services\Interface\IPublicBudgetRepository.cs" />
+    <Compile Remove="Services\Interface\IQuestionContentRepository.cs" />
+    <Compile Remove="Services\Interface\IWebLinkRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="AWSSDK.S3" Version="3.7.308.2" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.55" />
+    <PackageReference Include="HtmlSanitizer" Version="8.0.865" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://atmos.tools/schemas/atmos/atmos-manifest/1.0/atmos-manifest.json" /></VisualStudio></ProjectExtensions>
+
+</Project>
