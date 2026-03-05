@@ -1,8 +1,7 @@
-# Bước build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+# Bước build (Nâng cấp lên SDK 9.0 mới nhất)
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-# Sửa thành API.csproj
 COPY ["API.csproj", "./"]
 RUN dotnet restore "API.csproj"
 
@@ -10,10 +9,9 @@ RUN dotnet restore "API.csproj"
 COPY . .
 RUN dotnet publish "API.csproj" -c Release -o /app/publish
 
-# Bước chạy thực tế
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+# Bước chạy thực tế (Nâng cấp Runtime lên 9.0)
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 
-# Sửa thành API.dll
 ENTRYPOINT ["dotnet", "API.dll"]
