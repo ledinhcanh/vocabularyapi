@@ -22,11 +22,18 @@ namespace API.Services.Implement
         }
 
         // 1. Lấy danh sách Topic
-        public async Task<AppResponse<object>> GetTopics()
+        public async Task<AppResponse<object>> GetTopics(string? keyword = null)
         {
             try
             {
-                var topics = await _context.Topics
+                var query = _context.Topics.AsQueryable();
+                
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    query = query.Where(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
+                }
+
+                var topics = await query
                     .OrderByDescending(x => x.Id)
                     .Select(x => new TopicResponse
                     {

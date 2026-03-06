@@ -36,17 +36,18 @@ namespace API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> GetTopics()
+        public async Task<IActionResult> GetTopics([FromQuery] string? keyword = null)
         {
-            _logger.Log(LogLevel.Information, CACHE_KEY_GET_CATEGORIES);
+            var cacheKey = string.IsNullOrEmpty(keyword) ? CACHE_KEY_GET_CATEGORIES : $"{CACHE_KEY_GET_CATEGORIES}?keyword={keyword}";
+            _logger.Log(LogLevel.Information, cacheKey);
 
-            if (_enableCache && !ClearCache() && _memoryCache.TryGetValue(CACHE_KEY_GET_CATEGORIES, out AppResponse<object>? result))
+            if (_enableCache && !ClearCache() && _memoryCache.TryGetValue(cacheKey, out AppResponse<object>? result))
             {
                 Response.Headers.Append("Cache", "true");
                 return Ok(result);
             }
 
-            var data = await _topicRepository.GetTopics();
+            var data = await _topicRepository.GetTopics(keyword);
 
             if (_enableCache)
             {
@@ -55,7 +56,7 @@ namespace API.Controllers
                     AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(this._timeExpireInMinutes),
                     Priority = CacheItemPriority.Normal
                 };
-                _memoryCache.Set(CACHE_KEY_GET_CATEGORIES, data, cacheEntryOptions);
+                _memoryCache.Set(cacheKey, data, cacheEntryOptions);
             }
             return Ok(data);
         }
